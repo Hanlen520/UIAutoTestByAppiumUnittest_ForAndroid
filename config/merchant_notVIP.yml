@@ -1,0 +1,23 @@
+#-------------------------------------------------
+#   File Name：     config.yml
+#   Description :
+#   Author :        Meiyo
+#   date：          2018/3/19 20:33
+#-------------------------------------------------
+#   Change Activity:
+#                   2018/3/19:
+#------------------------------------------------- 
+
+MerchantInfo:
+    merchant_code: A00303780000001
+
+ShopManagerInfo:
+    usercode: yu
+    password: a123456
+
+CashierInfo:
+    usercode: qing
+    password: a123456
+
+
+
