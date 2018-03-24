@@ -15,6 +15,7 @@
 __author__ = 'Meiyo'
 
 import util
+from time import sleep
 
 
 def merchant_activate(driver, merchant_code):
@@ -28,8 +29,6 @@ def merchant_activate(driver, merchant_code):
 
     util.find_textview_by_xpath_and_click(driver, '立即体验')
 
-    # el3 = driver.find_element_by_xpath("//android.widget.EditText[@text='输入手机号/商户号']")
-    # el3.send_keys(merchant_code)
     driver.find_element_by_xpath("//android.widget.EditText[@text='输入手机号/商户号']").send_keys(merchant_code)
 
     util.find_textview_by_xpath_and_click(driver, '激活')
@@ -53,5 +52,33 @@ def user_login(driver, usercode, password):
     util.find_textview_by_xpath_and_click(driver, '登录')
 
 
-def user_logout():
-    pass
+def user_logout3(driver):
+    # 打开 我的tab
+    util.find_textview_by_xpath_and_click(driver, '我的')
+
+    # 打开设置tab
+    util.find_textview_by_xpath_and_click(driver, '设置')
+
+    util.find_textview_by_xpath_and_click(driver, '退出登录')
+
+    # 确认退出
+    driver.find_element_by_id("android:id/button2").click()
+
+
+def user_logout4(driver):
+    # 打开 我的tab
+    util.find_textview_by_xpath_and_click(driver, '我的')
+
+    # 打开设置tab
+    el2 = driver.find_element_by_accessibility_id("my_setting")
+    el2.click()
+
+    sleep(3)
+
+    # 向上滑动
+    util.swipe_to_up(driver)
+
+    util.find_textview_by_xpath_and_click(driver, '退出登录')
+
+    # 确认退出
+    driver.find_element_by_id("android:id/button2").click()

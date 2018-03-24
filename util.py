@@ -57,16 +57,26 @@ def swipe_to_left(driver, duration=None):
         print(ex)
 
 
+def swipe_to_up(driver, duration=None):
+    try:
+        width = driver.get_window_size().get('width')
+        height = driver.get_window_size().get('height')
+
+        driver.swipe(width/2, (height/6)*5, width/2, height/6, duration)
+
+    except Exception as ex:
+        print(ex)
+
+
 def find_textview_by_xpath_and_click(driver, name):
     try:
-
         els = driver.find_element_by_xpath("//android.widget.TextView[@text=\'" + name + "\']")
         if isinstance(els, list):
             els[0].click()
         else:
             els.click()
     except Exception as ex:
-        print(ex)
+        print(ex, name)
 
 
 def is_textview_exist_by_xpath(driver, name):
