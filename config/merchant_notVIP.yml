@@ -9,14 +9,15 @@
 #------------------------------------------------- 
 
 MerchantInfo:
-    merchant_code: A00303780000001
+    merchant_code: A00300100000182
+    password: a123456
 
 ShopManagerInfo:
-    usercode: yu
+    usercode: Qing
     password: a123456
 
 CashierInfo:
-    usercode: qing
+    usercode: Yu
     password: a123456
 
 

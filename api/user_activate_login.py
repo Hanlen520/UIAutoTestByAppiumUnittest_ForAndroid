@@ -53,6 +53,7 @@ def user_login(driver, usercode, password):
 
 
 def user_logout3(driver):
+    sleep(1)
     # 打开 我的tab
     util.find_textview_by_xpath_and_click(driver, '我的')
 
@@ -66,6 +67,8 @@ def user_logout3(driver):
 
 
 def user_logout4(driver):
+    sleep(1)
+
     # 打开 我的tab
     util.find_textview_by_xpath_and_click(driver, '我的')
 
@@ -73,7 +76,7 @@ def user_logout4(driver):
     el2 = driver.find_element_by_accessibility_id("my_setting")
     el2.click()
 
-    sleep(3)
+    sleep(2)
 
     # 向上滑动
     util.swipe_to_up(driver)

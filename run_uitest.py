@@ -13,7 +13,7 @@
 ------------------------------------------------- 
 """
 __author__ = 'Meiyo'
-import os
+
 import unittest
 from testcases import test_caibao4_merchant
 from testcases import test_caibao4_shopmanager

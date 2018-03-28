@@ -10,10 +10,10 @@
 
 MerchantInfo:
     merchant_code: A00300100000178
-    password: 123456
+    password: a123456
 
 ShopManagerInfo:
-    usercode: 001
+    usercode: yu
     password: a123456
 
 CashierInfo:

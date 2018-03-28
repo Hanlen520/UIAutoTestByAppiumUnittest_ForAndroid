@@ -75,6 +75,7 @@ def find_textview_by_xpath_and_click(driver, name):
             els[0].click()
         else:
             els.click()
+
     except Exception as ex:
         print(ex, name)
 
@@ -87,7 +88,7 @@ def is_textview_exist_by_xpath(driver, name):
         else:
             return els.is_displayed()
     except Exception as e:
-        print(e)
+        print(e, name)
         return False
 
 
