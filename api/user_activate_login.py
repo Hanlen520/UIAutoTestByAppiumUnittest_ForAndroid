@@ -67,7 +67,7 @@ def user_logout3(driver):
 
 
 def user_logout4(driver):
-    sleep(1)
+    sleep(3)
 
     # 打开 我的tab
     util.find_textview_by_xpath_and_click(driver, '我的')

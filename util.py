@@ -21,6 +21,7 @@ import logging
 # 参考https://developer.android.com/reference/android/view/KeyEvent.html
 KEYCODE_ENTER = 66
 
+
 def check_format(file_path, content):
     """ check testcase format if valid
     """
@@ -63,6 +64,17 @@ def swipe_to_up(driver, duration=None):
         height = driver.get_window_size().get('height')
 
         driver.swipe(width/2, (height/6)*5, width/2, height/6, duration)
+
+    except Exception as ex:
+        print(ex)
+
+
+def swipe_to_down(driver, duration=None):
+    try:
+        width = driver.get_window_size().get('width')
+        height = driver.get_window_size().get('height')
+
+        driver.swipe(width/2, height/6, width/2, (height/6)*5, duration)
 
     except Exception as ex:
         print(ex)

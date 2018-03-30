@@ -30,7 +30,7 @@ class MerchantActivateAndLogin(unittest.TestCase):
         caps = {}
         caps["platformName"] = "Android"
         caps["platformVersion"] = "6.0"
-        caps["deviceName"] = "48decad2"
+        caps["deviceName"] = "192.168.24.101:5555"
         caps["appActivity"] = "com.ziyuanpai.caibao.MainActivity"
         caps["appPackage"] = "com.ziyuanpai.caibao.d"
         cls.driver = webdriver.Remote("http://localhost:4723/wd/hub", caps)
@@ -108,7 +108,7 @@ class MerchantActivateAndLogin(unittest.TestCase):
 
         # 会员页的页面元素
         text_list = ['会员', '总会员', '价值', '普通', '沉睡', '流失', '上周数据',
-                     '会员新增', '复购率', '流失率', '会员消费占比', '会员笔单价', '查看完整数据周报',
+                     '会员新增', '复购率', '流失率', '会员消费占比', '会员笔单价',
                      '招募会员', '增加黏性', '流失挽回']
 
         for each in text_list:
@@ -116,10 +116,10 @@ class MerchantActivateAndLogin(unittest.TestCase):
 
     def test_find_element_vip_vipList(self):
         # 打开会员列表页面
-        els1 = self.driver.find_elements_by_xpath("//android.widget.ImageView[@index='0']")
-        els1[0].click()
+        el1 = self.driver.find_element_by_accessibility_id("vip_bar_right_bt")
+        el1.click()
 
-        self.assertIsNotNone(self.driver.find_element_by_xpath("//android.widget.TextView[@text='会员列表']"))
+        self.assertTrue(util.is_textview_exist_by_xpath(self.driver, '输入会员手机号搜索'))
 
     def test_find_element_vip_marketing(self):
         WebDriverWait(self, 30).until(lambda x:
@@ -176,9 +176,14 @@ class MerchantActivateAndLogin(unittest.TestCase):
             self.assertIsNotNone(self.driver.find_element_by_xpath("//android.widget.TextView[@text='您还没有新的消息']"))
 
     def test_find_element_Mine(self):
+        WebDriverWait(self, 60).until(lambda x:
+                                      self.driver.find_element_by_xpath("//android.widget.TextView[@text='我的']"))
 
         # 打开我的tab页面
         util.find_textview_by_xpath_and_click(self.driver, '我的')
+
+        WebDriverWait(self, 60).until(lambda x:
+                                      self.driver.find_element_by_xpath("//android.widget.TextView[@text='门店']"))
 
         # 会员页的页面元素
         text_list1 = ['门店', '收银人员', '商品', '会员权益', '活动管理', '券中心', '签约管理', '广告']
@@ -192,6 +197,8 @@ class MerchantActivateAndLogin(unittest.TestCase):
 
         for each in text_list2:
             self.assertTrue(util.is_textview_exist_by_xpath(self.driver, each))
+
+        util.swipe_to_down(self.driver)
 
     def test_Mine_Members_rights_vipCard(self):
         # 打开我的tab页面
@@ -277,17 +284,17 @@ if __name__ == '__main__':
     suite.addTest(MerchantActivateAndLogin("test_find_element_today_report"))
     #
     # # 会员页测试
-    suite.addTest(MerchantActivateAndLogin("test_find_element_vip"))
+    # suite.addTest(MerchantActivateAndLogin("test_find_element_vip"))
     # suite.addTest(MerchantActivateAndLogin("test_find_element_vip_vipList"))
-    suite.addTest(MerchantActivateAndLogin("test_find_element_vip_marketing"))
+    # suite.addTest(MerchantActivateAndLogin("test_find_element_vip_marketing"))
     #
     # # 消息页面
-    suite.addTest(MerchantActivateAndLogin("test_find_element_Message"))
+    # suite.addTest(MerchantActivateAndLogin("test_find_element_Message"))
     #
     # # 我的页面
-    suite.addTest(MerchantActivateAndLogin("test_find_element_Mine"))
-    suite.addTest(MerchantActivateAndLogin("test_Mine_Members_rights_vipCard"))
-    suite.addTest(MerchantActivateAndLogin("test_Mine_Members_rights_vipDay"))
+    # suite.addTest(MerchantActivateAndLogin("test_find_element_Mine"))
+    # suite.addTest(MerchantActivateAndLogin("test_Mine_Members_rights_vipCard"))
+    # suite.addTest(MerchantActivateAndLogin("test_Mine_Members_rights_vipDay"))
 
     unittest.TextTestRunner(verbosity=2).run(suite)
 

@@ -30,7 +30,7 @@ class ShopCashierLogin(unittest.TestCase):
         caps = {}
         caps["platformName"] = "Android"
         caps["platformVersion"] = "6.0"
-        caps["deviceName"] = "48decad2"
+        caps["deviceName"] = "192.168.24.101:5555"
         caps["appActivity"] = "com.ziyuanpai.caibao.MainActivity"
         caps["appPackage"] = "com.ziyuanpai.caibao.d"
         cls.driver = webdriver.Remote("http://localhost:4723/wd/hub", caps)

@@ -18,6 +18,7 @@ import unittest
 from testcases import test_caibao4_merchant
 from testcases import test_caibao4_shopmanager
 from testcases import test_caibao4_shopcashier
+from testcases import test_caibao4_merchant_notVip
 
 
 if __name__ == '__main__':
@@ -25,16 +26,25 @@ if __name__ == '__main__':
     suite_list = []
 
     suite = unittest.TestLoader().loadTestsFromTestCase(test_caibao4_merchant.MerchantActivateAndLogin)
-    suite_list.append(suite)
+    # suite_list.append(suite)
     unittest.TextTestRunner(verbosity=2).run(suite)
 
     suite = unittest.TestLoader().loadTestsFromTestCase(test_caibao4_shopmanager.ShopManagerLogin)
-    suite_list.append(suite)
+    # suite_list.append(suite)
     unittest.TextTestRunner(verbosity=2).run(suite)
 
     suite = unittest.TestLoader().loadTestsFromTestCase(test_caibao4_shopcashier.ShopCashierLogin)
-    suite_list.append(suite)
+    # suite_list.append(suite)
     unittest.TextTestRunner(verbosity=2).run(suite)
+
+    suite = unittest.TestLoader().loadTestsFromTestCase(test_caibao4_shopcashier.ShopCashierLogin)
+    # suite_list.append(suite)
+    unittest.TextTestRunner(verbosity=2).run(suite)
+
+    suite = unittest.TestLoader().loadTestsFromTestCase(test_caibao4_merchant_notVip.MerchantActivateAndLoginNotVip)
+    # suite_list.append(suite)
+    unittest.TextTestRunner(verbosity=2).run(suite)
+
 
 
 
