@@ -20,7 +20,6 @@ from selenium.webdriver.support.ui import WebDriverWait
 import util
 from api.user_activate_login import merchant_activate, user_login, user_logout4
 import os
-from time import sleep
 
 
 class MerchantActivateAndLogin(unittest.TestCase):
