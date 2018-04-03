@@ -20,7 +20,8 @@ from time import sleep
 
 def merchant_activate(driver, merchant_code):
 
-    driver.find_element_by_id("android:id/button1").click()
+    # driver.find_element_by_id("android:id/button1").click()
+    sleep(3)
 
     # 引导页，左滑动屏幕
     util.swipe_to_left(driver)

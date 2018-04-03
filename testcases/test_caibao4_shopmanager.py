@@ -29,9 +29,9 @@ class ShopManagerLogin(unittest.TestCase):
         caps = {}
         caps["platformName"] = "Android"
         caps["platformVersion"] = "6.0"
-        caps["deviceName"] = "192.168.24.101:5555"
+        caps["deviceName"] = "48decad2"
         caps["appActivity"] = "com.ziyuanpai.caibao.MainActivity"
-        caps["appPackage"] = "com.ziyuanpai.caibao.d"
+        caps["appPackage"] = "com.ziyuanpai.caibao"
         cls.driver = webdriver.Remote("http://localhost:4723/wd/hub", caps)
         cls.driver.implicitly_wait(10)
 
@@ -59,8 +59,8 @@ class ShopManagerLogin(unittest.TestCase):
 
     def test_find_element_index(self):
         # 店长登录成功之后，首页的页面元素
-        text_list = ['收款', '会员列表', '商品收银', '交易分析', '商品', '我的二维码', '收款金额', '新注册会员',
-                     '测试', '账本', '活动', '我的']
+        text_list = ['收款', '会员列表', '商品收银', '交易分析', '我的二维码', '收款金额', '新注册会员',
+                     '采宝', '账本', '活动', '我的']
 
         for each in text_list:
             self.assertTrue(util.is_textview_exist_by_xpath(self.driver, each))

@@ -119,7 +119,7 @@ class OutputRedirector(object):
         self.fp = fp
 
     def write(self, s):
-        self.fp.write(bytes(s,'UTF-8'))
+        self.fp.write(bytes(s, 'UTF-8'))
 
     def writelines(self, lines):
         self.fp.writelines(lines)
@@ -518,6 +518,7 @@ TestResult = unittest.TestResult
 class _TestResult(TestResult):
     # note: _TestResult is a pure representation of results.
     # It lacks the output and reporting ability compares to unittest._TextTestResult.
+    outputBuffer = io.BytesIO()
 
     def __init__(self, verbosity=1):
         TestResult.__init__(self)
@@ -537,11 +538,9 @@ class _TestResult(TestResult):
         # )
         self.result = []
 
-
     def startTest(self, test):
         TestResult.startTest(self, test)
         # just one buffer for both stdout and stderr
-        self.outputBuffer = io.BytesIO()
         stdout_redirector.fp = self.outputBuffer
         stderr_redirector.fp = self.outputBuffer
         self.stdout0 = sys.stdout
@@ -566,7 +565,6 @@ class _TestResult(TestResult):
         # But there are some path in unittest that would bypass this.
         # We must disconnect stdout in stopTest(), which is guaranteed to be called.
         self.complete_output()
-
 
     def addSuccess(self, test):
         self.success_count += 1
@@ -624,7 +622,6 @@ class HTMLTestRunner(Template_mixin):
 
         self.startTime = datetime.datetime.now()
 
-
     def run(self, test):
         "Run the given test case or test suite."
         result = _TestResult(self.verbosity)
@@ -648,7 +645,6 @@ class HTMLTestRunner(Template_mixin):
         r = [(cls, rmap[cls]) for cls in classes]
         return r
 
-
     def getReportAttributes(self, result):
         """
         Return report attributes as a list of (name, value).
@@ -669,7 +665,6 @@ class HTMLTestRunner(Template_mixin):
             ('Duration', duration),
             ('Status', status),
         ]
-
 
     def generateReport(self, test, result):
         report_attrs = self.getReportAttributes(result)
@@ -743,10 +738,10 @@ class HTMLTestRunner(Template_mixin):
 
         report = self.REPORT_TMPL % dict(
             test_list = ''.join(rows),
-            count = str(result.success_count+result.failure_count+result.error_count),
-            Pass = str(result.success_count),
-            fail = str(result.failure_count),
-            error = str(result.error_count),
+            count=str(result.success_count+result.failure_count+result.error_count),
+            Pass=str(result.success_count),
+            fail=str(result.failure_count),
+            error=str(result.error_count),
         )
         return report
 

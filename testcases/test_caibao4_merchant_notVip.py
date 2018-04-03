@@ -29,9 +29,9 @@ class MerchantActivateAndLoginNotVip(unittest.TestCase):
         caps = {}
         caps["platformName"] = "Android"
         caps["platformVersion"] = "6.0"
-        caps["deviceName"] = "192.168.24.101:5555"
+        caps["deviceName"] = "48decad2"
         caps["appActivity"] = "com.ziyuanpai.caibao.MainActivity"
-        caps["appPackage"] = "com.ziyuanpai.caibao.d"
+        caps["appPackage"] = "com.ziyuanpai.caibao"
         cls.driver = webdriver.Remote("http://localhost:4723/wd/hub", caps)
         cls.driver.implicitly_wait(5)
 

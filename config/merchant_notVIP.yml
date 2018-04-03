@@ -9,7 +9,7 @@
 #------------------------------------------------- 
 
 MerchantInfo:
-    merchant_code: A00300100000182
+    merchant_code: A00305930000003
     password: a123456
 
 ShopManagerInfo:
